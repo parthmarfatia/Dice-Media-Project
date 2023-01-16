@@ -4,5 +4,6 @@
 1) npm i
 2) npm run dev
 
-##Final Product
 
+##Deployed
+https://fastidious-torrone-a11777.netlify.app/
