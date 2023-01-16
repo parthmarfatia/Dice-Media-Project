@@ -6,58 +6,16 @@ const FilterOptions = (props) => {
     
     function sortOpt(str){
         const sortedData = [...data]
-       switch(str){
-        case "forks-asc":
+        const [val,order] = str.split('-')
+        if(order === 'asc'){
             setData(sortedData.sort(
-                (p1, p2) => (p1.forks > p2.forks) ? 1 : (p1.forks < p2.forks) ? -1 : 0
+                (p1, p2) => (p1[val] > p2[val]) ? 1 : (p1[val] < p2[val]) ? -1 : 0
             ))
-            break
-        case "forks-desc":
+        }else{
             setData(sortedData.sort(
-                (p1, p2) => (p1.forks < p2.forks) ? 1 : (p1.forks > p2.forks) ? -1 : 0
+                (p1, p2) => (p1[val] < p2[val]) ? 1 : (p1[val] > p2[val]) ? -1 : 0
             ))
-            break
-        case "watchers-asc":
-            setData(sortedData.sort(
-                (p1, p2) => (p1.watchers > p2.watchers) ? 1 : (p1.watchers < p2.watchers) ? -1 : 0
-            ))
-            break
-        case "watchers-desc":
-            setData(sortedData.sort(
-                (p1, p2) => (p1.watchers < p2.watchers) ? 1 : (p1.watchers > p2.watchers) ? -1 : 0
-            ))
-            break
-        case "scores-asc":
-            setData(sortedData.sort(
-                (p1, p2) => (p1.score > p2.score) ? 1 : (p1.score < p2.score) ? -1 : 0
-            ))
-            break
-        case "scores-desc":
-            setData(sortedData.sort(
-                (p1, p2) => (p1.score < p2.score) ? 1 : (p1.score > p2.score) ? -1 : 0
-            ))
-            break
-        case "created-asc":
-            setData(sortedData.sort(
-                (p1, p2) => (p1.created_at > p2.created_at) ? 1 : (p1.created_at < p2.created_at) ? -1 : 0
-            ))
-            break
-        case "created-desc":
-            setData(sortedData.sort(
-                (p1, p2) => (p1.created_at < p2.created_at) ? 1 : (p1.created_at > p2.created_at) ? -1 : 0
-            ))
-            break
-        case "updated-asc":
-            setData(sortedData.sort(
-                (p1, p2) => (p1.updated_at > p2.updated_at) ? 1 : (p1.updated_at < p2.updated_at) ? -1 : 0
-            ))
-            break
-        case "updated-desc":
-            setData(sortedData.sort(
-                (p1, p2) => (p1.updated_at < p2.updated_at) ? 1 : (p1.updated_at > p2.updated_at) ? -1 : 0
-            ))
-            break    
-       }
+        }
     }
 
     return (
@@ -94,8 +52,8 @@ const FilterOptions = (props) => {
                     Created_at
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                    <Dropdown.Item eventKey="created-asc">Old to New</Dropdown.Item>
-                    <Dropdown.Item eventKey="created-desc">New to Old</Dropdown.Item>
+                    <Dropdown.Item eventKey="created_at-asc">Old to New</Dropdown.Item>
+                    <Dropdown.Item eventKey="created_at-desc">New to Old</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             <Dropdown className="custom--dropdown" onSelect={sortOpt}>
@@ -103,12 +61,12 @@ const FilterOptions = (props) => {
                     Updated_at
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                    <Dropdown.Item eventKey="updated-asc">Old to New</Dropdown.Item>
-                    <Dropdown.Item eventKey="updated-desc">New to Old</Dropdown.Item>
+                    <Dropdown.Item eventKey="updated_at-asc">Old to New</Dropdown.Item>
+                    <Dropdown.Item eventKey="updated_at-desc">New to Old</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
         </section>
     )
 }
 
-export default FilterOptions
+export default FilterOptions;
