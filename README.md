@@ -5,5 +5,5 @@
 2) npm run dev
 
 
-##Deployed
+## Deployed
 https://fastidious-torrone-a11777.netlify.app/
