@@ -9,7 +9,7 @@ const CardsInfo = (props) => {
         return (
             <Card key={id} className="single--card" style={{ width: '18rem' }}>
                 <Card.Body>
-                    <Card.Title>{name}</Card.Title>
+                    <Card.Title className="bg-warning p-2">{name}</Card.Title>
                     <Card.Text>{description}</Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
